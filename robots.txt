@@ -1,0 +1,10 @@
+# robots.txt — CHR Contrôle Hydrant Réunion
+# https://chr-conformite-reunion.vercel.app
+
+User-agent: *
+Allow: /
+
+# Ne pas indexer les données internes
+Disallow: /data/
+
+Sitemap: https://chr-conformite-reunion.vercel.app/sitemap.xml
