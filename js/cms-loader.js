@@ -13,7 +13,9 @@
   // Retourne { contact, accueil } ou null si indisponible.
   async function loadFromSanity() {
     var query = '*[_type in ["contact","accueil"]]';
-    var url = 'https://' + SANITY_PROJECT + '.apicdn.sanity.io/v2021-06-07/data/query/'
+    // API directe (api, PAS apicdn) pour que les modifications publiées
+    // apparaissent immédiatement sans cache CDN.
+    var url = 'https://' + SANITY_PROJECT + '.api.sanity.io/v2021-06-07/data/query/'
       + SANITY_DATASET + '?query=' + encodeURIComponent(query);
     try {
       var res = await fetch(url, { cache: 'no-store' });
