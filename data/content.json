@@ -1,18 +1,33 @@
 {
   "version": 2,
   "hero": {
-    "title_line1": "Expert hydrant",
+    "title_line1": "Expert hydrantt",
     "title_line2": "& conformité incendie",
     "title_line3": "",
     "title_highlight": "hydrant",
     "description": "Expert réunionnais en contrôle hydrant. Rapport AFNOR NF remis sous 24h, reconnu SDIS 974."
   },
   "menu": [
-    { "label": "Accueil", "url": "index.html" },
-    { "label": "Prestations", "url": "services.html" },
-    { "label": "L'entreprise", "url": "a-propos.html" },
-    { "label": "FAQ", "url": "faq.html" },
-    { "label": "Contact", "url": "contact.html" }
+    {
+      "label": "Accueil",
+      "url": "index.html"
+    },
+    {
+      "label": "Prestations",
+      "url": "services.html"
+    },
+    {
+      "label": "L'entreprise",
+      "url": "a-propos.html"
+    },
+    {
+      "label": "FAQ",
+      "url": "faq.html"
+    },
+    {
+      "label": "Contact",
+      "url": "contact.html"
+    }
   ],
   "contact": {
     "phone": "0692 86 80 68",
