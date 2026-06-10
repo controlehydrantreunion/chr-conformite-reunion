@@ -5,13 +5,67 @@
    ============================================================ */
 (function () {
 
-  async function loadContent() {
+  // ── Config Sanity (lecture publique, sans token) ──
+  var SANITY_PROJECT = 'dhe4ywjr';
+  var SANITY_DATASET = 'production';
+
+  // Charge contact + accueil depuis Sanity via l'API CDN publique.
+  // Retourne { contact, accueil } ou null si indisponible.
+  async function loadFromSanity() {
+    var query = '*[_type in ["contact","accueil"]]';
+    var url = 'https://' + SANITY_PROJECT + '.apicdn.sanity.io/v2021-06-07/data/query/'
+      + SANITY_DATASET + '?query=' + encodeURIComponent(query);
     try {
-      const res = await fetch('data/content.json', { cache: 'no-store' });
-      if (res.ok) return await res.json();
+      var res = await fetch(url, { cache: 'no-store' });
+      if (!res.ok) return null;
+      var data = await res.json();
+      var out = {};
+      (data.result || []).forEach(function (doc) {
+        if (doc._type === 'contact') out.contact = doc;
+        if (doc._type === 'accueil') out.accueil = doc;
+      });
+      return out;
+    } catch (e) {
+      return null;
+    }
+  }
+
+  // Fusionne les valeurs Sanity (non vides) dans le contenu de base.
+  // Sanity ne gère QUE contact + textes d'accueil ; le reste vient de content.json.
+  function mergeSanity(base, sanity) {
+    if (!base) base = {};
+    if (!sanity) return base;
+
+    if (sanity.contact) {
+      base.contact = base.contact || {};
+      ['phone', 'phoneRaw', 'email', 'address', 'whatsapp', 'hours'].forEach(function (k) {
+        if (sanity.contact[k]) base.contact[k] = sanity.contact[k];
+      });
+    }
+    if (sanity.accueil) {
+      var a = sanity.accueil;
+      base.hero = base.hero || {};
+      ['title_line1', 'title_line2', 'title_highlight', 'description'].forEach(function (k) {
+        if (a[k]) base.hero[k] = a[k];
+      });
+      base.je_suis = base.je_suis || {};
+      if (a.profil_title) base.je_suis.title = a.profil_title;
+      if (a.profil_intro) base.je_suis.intro = a.profil_intro;
+    }
+    return base;
+  }
+
+  async function loadContent() {
+    // 1. Base = content.json (source de secours, jamais cassante)
+    var base = null;
+    try {
+      var res = await fetch('data/content.json', { cache: 'no-store' });
+      if (res.ok) base = await res.json();
     } catch (e) {}
 
-    return null;
+    // 2. Enrichit avec Sanity si disponible ; sinon on garde la base telle quelle
+    var sanity = await loadFromSanity();
+    return mergeSanity(base, sanity);
   }
 
   function applyContent(content) {
