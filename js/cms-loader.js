@@ -50,9 +50,6 @@
       ['title_line1', 'title_line2', 'title_highlight', 'description'].forEach(function (k) {
         if (a[k]) base.hero[k] = a[k];
       });
-      base.je_suis = base.je_suis || {};
-      if (a.profil_title) base.je_suis.title = a.profil_title;
-      if (a.profil_intro) base.je_suis.intro = a.profil_intro;
     }
     return base;
   }
