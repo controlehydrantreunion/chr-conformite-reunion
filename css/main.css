@@ -3007,6 +3007,8 @@ body { overflow-x: clip; max-width: 100%; }
 .site-footer--white .footer-legal-links a:hover { color: var(--anthracite) !important; }
 .site-footer--white .footer-credit           { color: var(--steel-light) !important; }
 .site-footer--white .footer-credit strong    { color: var(--anthracite) !important; }
+.site-footer--white .footer-credit a          { color: var(--anthracite) !important; font-weight: 600; }
+.site-footer--white .footer-credit a:hover    { color: var(--red-incendie) !important; }
 
 /* 36.12 — Contact grid : aligner en haut */
 .contact-grid { align-items: start; }
@@ -3034,6 +3036,8 @@ body { overflow-x: clip; max-width: 100%; }
 .site-footer .footer-legal-links a:hover { color: var(--anthracite) !important; }
 .site-footer .footer-credit              { color: var(--steel-light) !important; }
 .site-footer .footer-credit strong       { color: var(--anthracite) !important; }
+.site-footer .footer-credit a            { color: var(--anthracite) !important; font-weight: 600; }
+.site-footer .footer-credit a:hover      { color: var(--red-incendie) !important; }
 
 /* 36.14 — Form qualifier : toujours 1 colonne (évite overflow dans colonne étroite) */
 .form-qualifier .form-row {
