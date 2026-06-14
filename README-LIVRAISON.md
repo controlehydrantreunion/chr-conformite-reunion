@@ -2,7 +2,7 @@
 
 Site CHR — Contrôle Hydrant Réunion. Statique HTML/CSS/JS, hébergé sur Vercel.
 
-URL prod : https://chr-conformite-reunion.vercel.app
+URL prod : https://incendieoi.fr
 
 ---
 
@@ -101,7 +101,7 @@ Headers HTTP appliqués sur toutes les pages (cf. `vercel.json`) :
 | `Referrer-Policy` | strict-origin-when-cross-origin |
 | `Permissions-Policy` | caméra/micro/géoloc bloqués |
 
-Vérifier après déploiement : https://securityheaders.com/?q=chr-conformite-reunion.vercel.app
+Vérifier après déploiement : https://securityheaders.com/?q=incendieoi.fr
 
 ## 4. RGPD / LÉGAL
 

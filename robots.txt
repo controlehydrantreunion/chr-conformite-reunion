@@ -1,5 +1,5 @@
 # robots.txt — CHR Contrôle Hydrant Réunion
-# https://chr-conformite-reunion.vercel.app
+# https://incendieoi.fr
 
 User-agent: *
 Allow: /
@@ -7,4 +7,4 @@ Allow: /
 # Ne pas indexer les données internes
 Disallow: /data/
 
-Sitemap: https://chr-conformite-reunion.vercel.app/sitemap.xml
+Sitemap: https://incendieoi.fr/sitemap.xml
